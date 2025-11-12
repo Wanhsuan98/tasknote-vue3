@@ -42,6 +42,7 @@
   
       <!-- 右側按鈕 -->
       <div class="flex items-center gap-2 ml-1 shrink-0">
+        <button class="btn btn--secondary" @click="$emit('edit', task.id)">編輯</button>
         <button class="btn btn--primary" @click="$emit('toggle-status', task.id)">完成</button>
         <button class="btn btn--danger" @click="$emit('remove', task.id)">刪除</button>
       </div>
@@ -55,6 +56,7 @@
   defineEmits<{
     (e: 'toggle-status', id: string): void
     (e: 'remove', id: string): void
+    (e: 'edit', id: string): void
   }>()
   </script>
   

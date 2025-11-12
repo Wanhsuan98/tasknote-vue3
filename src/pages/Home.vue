@@ -8,30 +8,23 @@
             總共有 {{ taskStore.total }} 筆任務，完成 {{ taskStore.doneCount }} 筆
           </p>
         </div>
-        <button
-          class="bg-brand text-white text-sm px-4 py-2 rounded-md shadow hover:bg-indigo-600 active:scale-[0.98] transition"
-          @click="addTask"
-        >
-          ➕ 新增任務
-        </button>
+        <button class="btn btn--primary" @click="ui.openForCreate()">➕ 新增任務</button>
       </header>
 
       <TaskList />
     </section>
+
+    <!-- Modal -->
+    <TaskForm v-if="ui.taskModalOpen" />
   </main>
 </template>
 
 <script setup lang="ts">
 import { useTaskStore } from '@/stores/taskStore'
+import { useUiStore } from '@/stores/uiStore'
 import TaskList from '@/components/tasks/TaskList.vue'
+import TaskForm from '@/components/tasks/TaskForm.vue'
 
 const taskStore = useTaskStore()
-
-const addTask = () => {
-  taskStore.addTask({
-    title: `任務 ${taskStore.total + 1}`,
-    description: '這是測試任務',
-    tags: ['week3'],
-  })
-}
+const ui = useUiStore()
 </script>

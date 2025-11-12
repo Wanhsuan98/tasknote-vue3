@@ -7,6 +7,7 @@
           :task="task"
           @toggle-status="toggleStatus"
           @remove="removeTask"
+          @edit="editTask"
         />
       </TransitionGroup>
   
@@ -18,40 +19,19 @@
   
   <script setup lang="ts">
   import { useTaskStore } from '@/stores/taskStore'
+  import { useUiStore } from '@/stores/uiStore'
   import TaskItem from './TaskItem.vue'
   
   const taskStore = useTaskStore()
+  const ui = useUiStore()
   
   const toggleStatus = (id: string) => {
     const t = taskStore.tasks.find((x) => x.id === id)
     if (!t) return
-    const next =
-      t.status === 'todo'
-        ? 'doing'
-        : t.status === 'doing'
-        ? 'done'
-        : 'todo'
+    const next = t.status === 'todo' ? 'doing' : t.status === 'doing' ? 'done' : 'todo'
     taskStore.updateTaskStatus(id, next)
   }
-  
-  const removeTask = (id: string) => {
-    taskStore.removeTask(id)
-  }
+  const removeTask = (id: string) => taskStore.removeTask(id)
+  const editTask = (id: string) => ui.openForEdit(id)
   </script>
-  
-  <style scoped>
-  /* TransitionGroup 動畫 */
-  .list-enter-active,
-  .list-leave-active {
-    transition: all 0.25s ease;
-  }
-  .list-enter-from {
-    opacity: 0;
-    transform: translateY(8px);
-  }
-  .list-leave-to {
-    opacity: 0;
-    transform: translateY(-8px);
-  }
-  </style>
   
