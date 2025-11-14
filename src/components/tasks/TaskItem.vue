@@ -33,7 +33,7 @@
           <span
             v-for="tag in task.tags"
             :key="tag"
-            class="text-[10px] px-1.5 py-0.5 rounded bg-slate-700 text-slate-300"
+            :class="tagClass(tag)"
           >
             #{{ tag }}
           </span>
@@ -51,6 +51,7 @@
   
   <script setup lang="ts">
   import type { Task } from '@/types/task'
+  import { tagClass } from '@/utils/tagColor'
   
   defineProps<{ task: Task }>()
   defineEmits<{

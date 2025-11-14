@@ -68,5 +68,37 @@
     .actions {
       @apply mt-4 flex items-center justify-end gap-2;
     }
+    .chip {
+      @apply inline-flex items-center gap-1 rounded-full border border-slate-600
+             bg-slate-800 px-3 py-1 text-xs text-slate-300 cursor-pointer
+             transition hover:bg-slate-700;
+    }
+    .chip--active {
+      @apply border-brand text-brand bg-brand/10;
+    }
+  
+    .search {
+      @apply w-full rounded-md border border-slate-600 bg-slate-900 text-slate-100
+             px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-blue-400/60;
+    }
+  
+    /* 彩色標籤 */
+    .tag {
+      @apply text-[11px] px-2 py-0.5 rounded-full font-medium;
+    }
+    .tag--red    { @apply bg-red-500/15    text-red-300; }
+    .tag--orange { @apply bg-orange-500/15 text-orange-300; }
+    .tag--amber  { @apply bg-amber-500/15  text-amber-300; }
+    .tag--yellow { @apply bg-yellow-500/15 text-yellow-700; }
+    .tag--lime   { @apply bg-lime-500/15   text-lime-300; }
+    .tag--green  { @apply bg-green-500/15  text-green-300; }
+    .tag--teal   { @apply bg-teal-500/15   text-teal-300; }
+    .tag--cyan   { @apply bg-cyan-500/15   text-cyan-300; }
+    .tag--blue   { @apply bg-blue-500/15   text-blue-300; }
+    .tag--indigo { @apply bg-indigo-500/15 text-indigo-300; }
+    .tag--violet { @apply bg-violet-500/15 text-violet-300; }
+    .tag--purple { @apply bg-purple-500/15 text-purple-300; }
+    .tag--pink   { @apply bg-pink-500/15   text-pink-300; }
+    .tag--rose   { @apply bg-rose-500/15   text-rose-300; }
   }
   
